@@ -27,10 +27,10 @@
 
 #define ESP8266  // comment if you want to use the sketch on a Arduino board
 #define MQTT     // uncomment if you want to foreward the message via MQTT
-#define OLED        // comment if you do not have a OLED display
+//#define OLED        // comment if you do not have a OLED display (I never got this to work...Kirk)
 
-//const long freq = 868E6;
-const long freq = 915E6;
+//const long freq = 868E6;  //... THIS IS FOR EUROPE
+const long freq = 915E6;  //... THIS IS FOR USA
 const int SF = 9;
 const long bw = 125E3;
 
@@ -44,12 +44,13 @@ SSD1306  display(0x3d, 4, 5);
 #include <ESP8266WiFi.h>
 //#include <credentials.h>
 
-IPAddress server(192, 168, 1, 169); // My Mac
+// It helps if you make your computer's IP static...otherwise your LoRa receiver won't reach it
+IPAddress server(192, 168, 1, 10); // THIS IS YOUR COMPUTER'S IP (notice the commas)
 #define TOPIC "sensor"
 #endif
 
 // MQTT broker
-const char* mqtt_server = "192.168.1.169"; // My Mac
+const char* mqtt_server = "192.168.1.10"; // // THIS IS YOUR COMPUTER'S IP 
 
 int counter, lastCounter;
 
@@ -108,7 +109,7 @@ void setup() {
     Serial.println("LoRa Started");
 
 #ifdef MQTT
-    WiFi.begin("Gitli", "Barabajagal1950");
+    WiFi.begin("YOUR_AP_SSID", "YOUR_AP_PASSWORD"); // Your AP's SSID and PASSWORD
 
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
