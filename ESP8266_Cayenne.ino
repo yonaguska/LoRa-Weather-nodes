@@ -12,8 +12,8 @@ bool debug = false; // if (debug) {
 bool debug2 = false; // if (debug2) { 
 
 // Stuff for LoRa setup
-//const long freq = 868E6;
-const long freq = 915E6;
+//const long freq = 868E6;  //... THIS IS FOR EUROPE
+const long freq = 915E6; //... THIS IS FOR USA
 const int SF = 9;
 const long bw = 125E3;
 int counter, lastCounter;
@@ -21,13 +21,13 @@ IPAddress local_ip = WiFi.localIP();
 float myTemp = 10.0;
 
 // WiFi network info.
-char ssid[] = "Gitli";
-char wifiPassword[] = "Barabajagal1950";
+char ssid[] = "YOUR_AP_SSID";
+char wifiPassword[] = "YOUR_AP_PASSWORD";
 
 // Cayenne authentication info. This should be obtained from the Cayenne Dashboard.
-char username[] = "ba447b90-4584-11e8-9c3e-8331599aadae";
-char password[] = "08f17aa3674d5f6d36026ca0f3bb7e63e61b29fe";
-char clientID[] = "b7af3fd0-4586-11e8-b4ef-898f2f5b9050";
+char username[] = "CAYENNE_USERNAME";
+char password[] = "CAYENNE_PASSWORD";
+char clientID[] = "CAYENNE_CLIENTID";
 
 unsigned long lastMillis = 0;
 
